@@ -1,0 +1,72 @@
+::ng-deep .p-inputnumber-input {
+  //input da div valor
+  flex: 1 1 auto;
+  width: 100% !important;
+  height: 2rem;
+  border-radius: 1rem;
+  font-size: 2rem;
+}
+
+.modalContainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  h2 {
+    margin: 0rem;
+  }
+
+  .inputContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid rgba(0, 0, 0, 0.496);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    input {
+      width: 40%;
+      text-align: center;
+    }
+  }
+  .btnContainer {
+    display: flex;
+    justify-content: end;
+    gap: 1rem;
+
+    #cancelarButton {
+      background-color: rgb(255, 255, 255);
+      color: #006ce0;
+      border: 1px solid #006ce0;
+    }
+
+    #cancelarButton:hover {
+      color: #5695d8;
+      border: 1px solid #5695d8;
+    }
+  }
+}
+
+button {
+  background-color: #006ce0;
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  font-size: 16px;
+  font-family: Arial, sans-serif;
+  cursor: pointer;
+  transition: background-color 0.5s ease;
+}
+
+button:hover {
+  background-color: #5695d8;
+}
+
+input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}

@@ -1,0 +1,18 @@
+<div class="modalContainer">
+  <h2>Atualizar Taxa</h2>
+
+  <div class="inputContainer">
+    <label for="novaTaxa">Insira nova taxa:</label>
+    <p-inputNumber
+      inputId="taxaModal"
+      [(ngModel)]="novaTaxa"
+      [min]="1"
+      [maxlength]="6"
+    ></p-inputNumber>
+  </div>
+
+  <div class="btnContainer">
+    <button (click)="salvarTaxa()">Salvar Taxa</button>
+    <button id="cancelarButton" (click)="cancelar()">Cancelar</button>
+  </div>
+</div>

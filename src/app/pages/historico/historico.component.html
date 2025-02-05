@@ -1,0 +1,115 @@
+<div class="historicoWrapper">
+  <app-header></app-header>
+  <div class="historicoItems">
+    <button (click)="toggleExibirFiltros()" id="filtrosBtn">Filtros</button>
+    <div class="filtros" *ngIf="exibirFiltros" [@filtrosAnimacao]>
+      <div class="flex-class">
+        <label for="moedaDestino">De:</label>
+        <div class="moeda">
+          <div style="height: 100%">
+            <p-dropdown
+              styleClass="p-dropdown-override"
+              [(ngModel)]="filtroMoeda"
+              (onChange)="aplicarFiltro()"
+              [options]="moedas"
+              optionLabel=""
+              placeholder="Selecione"
+            ></p-dropdown>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex-class">
+        <label for="moedaDestino">Para:</label>
+        <div class="moeda">
+          <div style="height: 100%">
+            <p-dropdown
+              styleClass="p-dropdown-override"
+              [(ngModel)]="filtroMoedaDestino"
+              (onChange)="aplicarFiltro()"
+              [options]="moedas"
+              optionLabel=""
+              placeholder="Selecione"
+            ></p-dropdown>
+          </div>
+        </div>
+      </div>
+      <div class="flex-class">
+        <label> Data:</label>
+        <input
+          style="height: 2rem; border-radius: 0.5rem"
+          type="date"
+          [(ngModel)]="filtroData"
+          (change)="aplicarFiltro()"
+        />
+      </div>
+
+      <div class="flex-class">
+        <label>
+          Valor Mínimo:
+          <input
+            style="height: 2rem; border-radius: 0.5rem"
+            type="number"
+            [(ngModel)]="filtroValorMin"
+            (input)="aplicarFiltro()"
+            (keydown)="bloqueiaLetraE($event)"
+            pattern="^\d+(,\d{1,2})?$"
+          />
+        </label>
+      </div>
+      <div class="flex-class">
+        <label>
+          Valor Máximo:
+          <input
+            style="height: 2rem; border-radius: 0.5rem"
+            type="number"
+            [(ngModel)]="filtroValorMax"
+            (input)="aplicarFiltro()"
+            (keydown)="bloqueiaLetraE($event)"
+            pattern="^\d+(,\d{1,2})?$"
+          />
+        </label>
+      </div>
+      <button id="limparBtn" (click)="limparFiltros()">Limpar</button>
+    </div>
+    <mat-spinner *ngIf="isLoading" color="warn" [diameter]="50"> </mat-spinner>
+    <div *ngIf="!isLoading" class="tableContainer">
+      <table>
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>De</th>
+            <th>Valor Inserido</th>
+            <th>Para</th>
+            <th>Valor Convertido</th>
+            <th>Data da Transação</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            (click)="detalhes(transacao)"
+            *ngFor="let transacao of itensPaginados"
+          >
+            <td>{{ transacao.id }}</td>
+            <td>{{ transacao.data.moedaOrigem }}</td>
+            <td>{{ transacao.data.valor | currencyFormat }}</td>
+            <td>{{ transacao.data.moedaDestino }}</td>
+            <td>{{ transacao.data.resultado | currencyFormat }}</td>
+            <td>{{ transacao.data.date }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <mat-paginator
+      [length]="transacoesFiltradas.length"
+      [pageSize]="pageSize"
+      [pageSizeOptions]="pageSizeOptions"
+      (page)="atualizaAoTrocarPagina($event, transacoesFiltradas)"
+    >
+    </mat-paginator>
+    <button id="novaConversaoBtn" (click)="voltar()">Nova Conversão</button>
+  </div>
+  <div class="footer">
+    <app-footer></app-footer>
+  </div>
+</div>

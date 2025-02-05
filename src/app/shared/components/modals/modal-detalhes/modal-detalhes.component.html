@@ -1,0 +1,15 @@
+<div class="detalhesWrapper">
+  <h3>Detalhes da transação: {{ transacao.id }}</h3>
+  <div class="infos">
+    <p>De: {{ transacao.data.moedaOrigem }}</p>
+    <p>
+      Para:
+      {{ transacao.data.moedaDestino }}
+    </p>
+    <p>Taxa de Conversão: {{ transacao.data.taxa }}</p>
+    <p>Valor Inicial: {{ transacao.data.valor | currencyFormat }}</p>
+    <p>Valor Convertido: {{ transacao.data.resultado | currencyFormat }}</p>
+    <p>Data da Transação: {{ transacao.data.date }}</p>
+  </div>
+  <button (click)="fechar()">Fechar</button>
+</div>

@@ -1,0 +1,134 @@
+<div class="painelContainer">
+  <app-header></app-header>
+  <div class="apresentacao-main">
+    <div class="apresentacao">
+      <h1>Conversão de Moedas</h1>
+      <div class="descricao">
+        <h2>Bem-Vindo ao Mercado de Pulgas dos Mil Saberes</h2>
+        <span>SRM CAPITAL EM MOVIMENTO</span>
+      </div>
+    </div>
+    <div class="mainContainer">
+      <div class="taxa-form">
+        <div class="taxa">
+          <mat-spinner *ngIf="isLoading" color="warn" [diameter]="50">
+          </mat-spinner>
+          <div *ngIf="!isLoading" class="taxaInfo">
+            <p>Taxa de Conversão :</p>
+            <p>
+              {{ 1 | currencyFormat }} Ouro Real =
+              {{ taxa | currencyFormat }} Tibar
+            </p>
+          </div>
+          <button id="atualizarBtn" (click)="abrirModal()">
+            Atualizar Taxa
+          </button>
+        </div>
+
+        <div class="formWrapper">
+          <form [formGroup]="formConversao">
+            <div class="seletores">
+              <div class="flex-class">
+                <label>Valor:</label>
+                <div class="valor">
+                  <div style="height: 100%">
+                    <p-inputNumber
+                      (onBlur)="verificaInput(formConversao.get('valor'))"
+                      inputId="integeronly"
+                      formControlName="valor"
+                      mode="currency"
+                      currency="BRL"
+                      locale="pt-BR"
+                      [maxlength]="20"
+                    ></p-inputNumber>
+                  </div>
+                </div>
+              </div>
+
+              <div class="flex-class">
+                <label for="moedaOrigem">De:</label>
+                <div class="moeda">
+                  <div style="height: 100%">
+                    <p-dropdown
+                      styleClass="p-dropdown-override-painel"
+                      (onChange)="
+                        verificaPermissaoAlteracao(
+                          formConversao.get('moedaOrigem'),
+                          formConversao.get('moedaDestino')
+                        )
+                      "
+                      formControlName="moedaOrigem"
+                      [options]="moedas"
+                      optionLabel=""
+                      placeholder="Selecione"
+                    ></p-dropdown>
+                  </div>
+                  <button
+                    class="inverter"
+                    (click)="
+                      inverteMoedas(formConversao.get('moedaOrigem')?.value)
+                    "
+                    [disabled]="formConversao.invalid"
+                  >
+                    <img src="../../../assets/images/arrows.svg" alt="" />
+                  </button>
+                </div>
+              </div>
+              <div class="flex-class">
+                <label for="moedaDestino">Para:</label>
+                <div class="moeda">
+                  <div style="height: 100%">
+                    <p-dropdown
+                      styleClass="p-dropdown-override-painel"
+                      (onChange)="
+                        verificaPermissaoAlteracao(
+                          formConversao.get('moedaDestino'),
+                          formConversao.get('moedaOrigem')
+                        )
+                      "
+                      id="moedaDestino"
+                      formControlName="moedaDestino"
+                      [options]="moedas"
+                      optionLabel=""
+                      placeholder="Selecione"
+                    ></p-dropdown>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+          <div class="resultado-buttonConverter">
+            <div class="resultadoContainer" *ngIf="resultado !== null">
+              <span id="spanMoedaOrigem">
+                {{ formConversao.get("valor")?.value | currencyFormat }}
+                {{ formConversao.get("moedaOrigem")?.value }} =
+              </span>
+              <span id="spanMoedaDestino">
+                {{ resultado | currencyFormat }}
+                {{ formConversao.get("moedaDestino")?.value }}
+              </span>
+            </div>
+            <div class="bottomBtns">
+              <button
+                id="converterBtn"
+                (click)="converter()"
+                [disabled]="formConversao.invalid"
+              >
+                Converter
+              </button>
+              <button
+                id="salvarBtn"
+                (click)="salvarTransacao()"
+                [disabled]="resultado === null"
+              >
+                Salvar Transação
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p-toast></p-toast>
+  <app-footer></app-footer>
+</div>

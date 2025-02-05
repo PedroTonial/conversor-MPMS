@@ -1,0 +1,44 @@
+.headerWrapper {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #040f43 !important;
+}
+
+.headerContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 4rem; /* Reduzindo um pouco a altura */
+  width: 75%;
+}
+
+.links {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.2rem; /* Reduzi o espaçamento */
+}
+
+img {
+  width: 8rem; /* Reduzi o tamanho da logo/imagem */
+}
+
+button {
+  background-color: rgba(255, 255, 255, 0);
+  color: white;
+  font-size: 1rem !important; /* Reduzi o tamanho da fonte */
+  border: none;
+  border-radius: 0.4rem;
+  padding: 0.4rem 0.8rem;
+  font-family: Arial, sans-serif;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  height: 2.5rem; /* Diminuí a altura */
+  width: 7rem; /* Diminuí a largura */
+}
+
+button:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
