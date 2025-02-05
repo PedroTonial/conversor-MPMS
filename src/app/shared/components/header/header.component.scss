@@ -10,7 +10,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 4rem; /* Reduzindo um pouco a altura */
+  height: 4rem;
   width: 75%;
 }
 
@@ -18,25 +18,25 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1.2rem; /* Reduzi o espaçamento */
+  gap: 1.2rem;
 }
 
 img {
-  width: 8rem; /* Reduzi o tamanho da logo/imagem */
+  width: 8rem;
 }
 
 button {
   background-color: rgba(255, 255, 255, 0);
   color: white;
-  font-size: 1rem !important; /* Reduzi o tamanho da fonte */
+  font-size: 1rem !important;
   border: none;
   border-radius: 0.4rem;
   padding: 0.4rem 0.8rem;
   font-family: Arial, sans-serif;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  height: 2.5rem; /* Diminuí a altura */
-  width: 7rem; /* Diminuí a largura */
+  height: 2.5rem;
+  width: 7rem;
 }
 
 button:hover {

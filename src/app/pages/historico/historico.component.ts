@@ -116,8 +116,6 @@ export class HistoricoComponent implements OnInit {
 
       return moedaMatch && dataMatch && valorMatch && moedaMatchDestino;
     });
-    console.log(this.transacoesFiltradas);
-    console.log(this.filtroValorMax);
     this.atualizaPaginacao(this.transacoesFiltradas);
   }
 

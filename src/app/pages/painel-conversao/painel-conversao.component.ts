@@ -92,7 +92,6 @@ export class PainelConversaoComponent implements OnInit {
     }
   }
   verificaInput(valorControl: AbstractControl | null): void {
-    console.log(valorControl);
     if (valorControl && valorControl.value <= 0) {
       valorControl!.setErrors({ min: true });
       const mensagem = 'O valor deve ser maior que 0!';
