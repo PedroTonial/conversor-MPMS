@@ -8,11 +8,11 @@ Este projeto utiliza a Versão v18.20.5 do [NodeJS](https://nodejs.org/en).
 
 ## Executando a Aplicação pela primeira vez:
 
-Clone o repositório de [link do repo]
+Clone o repositório de [Conversor Mercado de Pulgas](https://github.com/PedroTonial/conversor-MPMS)
 
 Dentro da pasta do projeto execute o comando `npm install` para instalar as dependências do Node básicas do projeto.
 
-O projeto não necessita "rodar" um banco + backend, ele está sendo emulado com a plataforma Firebase, com um real-time database, para simular de forma fiel um ambiente de desenvolvimento. O banco encontra-se em [link Firebase]
+O projeto não necessita "rodar" um banco + backend, ele está sendo emulado com a plataforma Firebase, com um real-time database, para simular de forma fiel um ambiente de desenvolvimento. O banco encontra-se em [Realtime Database](https://console.firebase.google.com/project/testeformulariopedro/database/testeformulariopedro-default-rtdb/data?hl=pt-br)
 
 Execute `npm start` para executar o servidor local do projeto (`http://localhost:4200/`) e testar a aplicação.
 
